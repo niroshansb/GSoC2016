@@ -1,46 +1,7 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-<modelVersion>4.0.0</modelVersion>
-<groupId>zoo</groupId>
-<artifactId>ZOO</artifactId>
-<version>1.6.0</version>
-<packaging>jar</packaging>
-<name>ZOO</name>
-<url>http://maven.apache.org</url>
-<properties>
-<maven.compiler.source>1.8</maven.compiler.source>
-<maven.compiler.target>1.8</maven.compiler.target>
-<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-<geotools.version>14.3</geotools.version>
-</properties>
-<dependencies>
-<dependency>
-<groupId>zoo</groupId>
-<artifactId>ZOO</artifactId>
-<version>1.6.0</version>
-<scope>system</scope>
-<systemPath>
-${user.home}/.m2/repository/zoo/ZOO/1.6.0/ZOO-1.6.0.jar
-</systemPath>
-</dependency>
-</dependencies>
-<repositories>
-<repository>
-<id>maven2-repository.dev.java.net</id>
-<name>Java.net repository</name>
-<url>http://download.java.net/maven/2</url>
-</repository>
-<repository>
-<id>osgeo</id>
-<name>Open Source Geospatial Foundation Repository</name>
-<url>http://download.osgeo.org/webdav/geotools/</url>
-</repository>
-<repository>
-<snapshots>
-<enabled>true</enabled>
-</snapshots>
-<id>boundless</id>
-<name>Boundless Maven Repository</name>
-<url>http://repo.boundlessgeo.com/main</url>
-</repository>
-</repositories>
-</project>
+Google Summer of Code 2016 
+ Project title: Implementing WPS for Geopaparazzi field data collection tool using ZOO-Project: Simplifying integration of field data and GIS
+ 
+ 
+ This is my repository for the code work.
+ 
+ 
