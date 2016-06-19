@@ -1,15 +1,15 @@
 This directory contains the geotools for ZOO-Service. 
 
-Geotools has been succsussfuly tested as a service on the Zoo-Project.
+Geotools has been succeussfully tested as a service on the Zoo-Project.
 Basically this document is explaining about building of geotools and maven has been used for building it. 
-(Note: Here the example has been exailned in the mac OSX environmnet )
+(Note: Here the example has been explained in the mac OSX environment )
 
 
 Then you can successfully setup the geotools as a service in ZOO-Project by follow the below steps. 
 
 Here the process is explaining the installation by using pom.xml file 
 
-(You should have already build zoo-api otherwise you can run "make" command and buiid it)
+(You should have already build zoo-api otherwise you can run "make" command and build it)
 
 You should create the ZOO.jar file in the  path ~/zoo-api/java/  by using the following command 
 	jar -cvf ./ZOO.jar ./org/zoo_project/ZOO.class
