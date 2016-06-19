@@ -1,0 +1,29 @@
+[HelloJTS]
+ Title = Computes the centroid of a polygon. 
+ Abstract = This service shall return the point that is the geometric centre of gravity of the geometry InputPolygon.
+ Profile = urn:ogc:wps:1.0.0:centroid
+ processVersion = 2
+ storeSupported = true
+ statusSupported = true
+ serviceProvider = org/zoo_project/tutorial/quickstart/Quickstart
+ serviceType = Java
+ <DataInputs>
+  [name]
+   Title = Polygon to get the centroid
+   Abstract = The centroid which is not necessarily within the geometry.
+   minOccurs = 0
+   maxOccurs = 1
+   <LiteralData>
+    dataType = string
+   </LiteralData>
+ </DataInputs>
+ <DataOutputs>
+  [Result]
+   Title = The Centroid
+   Abstract = JSON String / GML Entity of the centroid
+   <LiteralData>
+     <Default>
+       dataType = string
+     </Default>
+   </LiteralData>
+ </DataOutputs>  
