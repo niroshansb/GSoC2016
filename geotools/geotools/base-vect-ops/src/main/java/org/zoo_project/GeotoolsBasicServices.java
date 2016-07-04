@@ -34,7 +34,11 @@ import org.geotools.feature.*;
 import org.json.*;
 import java.lang.reflect.Method;
 import com.vividsolutions.jts.simplify.*;
+import java.nio.charset.Charset;
 
+interface TwoArgInterface {
+    public Geometry operation(Geometry g1,Geometry g2);
+}
 interface OneArgInterface {
     public Geometry operation(Geometry g);
 }
@@ -46,8 +50,16 @@ interface OneArgInterface {
 public class GeotoolsBasicServices {
 
     public static FeatureIterator parseInputs(HashMap input){
-	byte[] value=(byte[])input.get("value");
+	byte[] value=null;
+	try{
+	    value=(byte[])input.get("value");
+	}catch(Exception e){
+	    System.err.println("\n*** DEBUG 0 ====\n "+(String)input.get("value")+"\n==== DEBUG 0 ***");
+	    value=((String)input.get("value")).getBytes(Charset.forName("UTF-8"));
+	}
+	System.err.println("\n*** DEBUG 1 ====\n "+value+"\n==== DEBUG 1 ***");
 	String mimeType=input.get("mimeType").toString();
+	System.err.println("DEBUG MIMETYPE : "+mimeType);
 	if(mimeType.indexOf("text/xml")>=0) {
 	    try{
 		GML gml = new GML(GML.Version.GML2);
@@ -218,6 +230,107 @@ public class GeotoolsBasicServices {
 	return JsonOp(conf,inputs,outputs,(Geometry g) -> (TopologyPreservingSimplifier.simplify(g,Double.parseDouble(size.get("value").toString()))),MultiPolygon.class);
     }
 
+    public static int JsonOp2(HashMap conf,HashMap inputs, HashMap outputs,TwoArgInterface func) throws Exception {
+	CoordinateReferenceSystem targetCRS=null;
+	try{
+	    HashMap input2=(HashMap)inputs.get("InputEntity2");
+	    FeatureIterator iterator2=parseInputs(input2);
+	    System.err.println("FC2 ("+iterator2+")");
+	    SimpleFeatureType TYPE=null;
+
+	    SimpleFeatureTypeBuilder FTYPE = new SimpleFeatureTypeBuilder();
+	    List<SimpleFeature> features0 = new ArrayList<SimpleFeature>();
+	    List<SimpleFeature> rFeatures = new ArrayList<SimpleFeature>();
+
+	    GeometryFactory geometryFactory = JTSFactoryFinder.getGeometryFactory();
+
+	    SimpleFeatureType featureType = null;
+	    SimpleFeatureBuilder featureBuilder = null;
+	    int iter=0;
+
+	    /**
+	     * Loop over every feature and run the requested computation
+	     */
+	    while( iterator2.hasNext() ){
+		SimpleFeature feature2 = (SimpleFeature)iterator2.next();
+		features0.add(feature2);
+		if(iter==0){
+		    /**
+		     * Loop over every attributes to create a SimpleFeatureType
+		     */
+		    TYPE=(SimpleFeatureType)feature2.getType();
+		    FTYPE.setName( "Result" );
+		    FTYPE.setNamespaceURI( "http://www.geotools.org/" );
+		    //FTYPE.setSRS( "EPSG:4326");		    
+		    for(int i=0;i<TYPE.getAttributeCount();i+=1){
+			FTYPE.add("the_geom",TYPE.getType(i).getBinding());
+		    }
+		    featureType = FTYPE.buildFeatureType();
+		    featureBuilder = new SimpleFeatureBuilder(featureType);
+		}
+
+		HashMap input1=(HashMap)inputs.get("InputEntity1");
+		FeatureIterator iterator1=parseInputs(input1);
+		System.err.println("FC1 ("+iterator1+")");
+
+		Geometry geom2 = (Geometry) feature2.getDefaultGeometry();
+		while( iterator1.hasNext() ){
+		    SimpleFeature feature1 = (SimpleFeature)iterator1.next();
+
+		    boolean shouldAdd=false;
+		    Geometry geom1 = (Geometry) feature1.getDefaultGeometry();
+		    for(int i=0;i<TYPE.getAttributeCount();i+=1){
+			if(TYPE.getType(i).getBinding().toString().indexOf("com.vividsolutions.jts.geom.")>=0){
+			    Geometry geomF=func.operation(geom1,geom2);
+			    if(geomF!=null){
+				featureBuilder.add(geomF);
+				shouldAdd=true;
+			    }
+			}
+			else
+			    featureBuilder.add(feature2.getAttribute(i));
+		    }
+		    if(shouldAdd){
+			SimpleFeature feature0 = featureBuilder.buildFeature(null);
+			rFeatures.add(feature0);
+		    }
+		}
+		iterator1.close();
+
+		iter+=1;
+	    }
+	    iterator2.close();
+
+	    /**
+	     * Set the final output["Result"]["value"]
+	     */
+	    HashMap hm1 = (HashMap)(outputs.get("Result"));
+	    SimpleFeatureCollection collection = new ListFeatureCollection(featureType, rFeatures);
+	    generateOutput(hm1,collection,featureType);
+	    return ZOO.SERVICE_SUCCEEDED;
+	}catch(Exception e){
+	    ((HashMap)conf.get("lenv")).put("message",e.toString());
+	    System.err.println("\n*** ERROR Final ====\n "+e+"\n==== ERROR Final ***");
+	    e.printStackTrace();
+	}
+	return ZOO.SERVICE_FAILED;
+    }
+
+    public static int Union(HashMap conf,HashMap inputs, HashMap outputs) throws Exception {
+	return JsonOp2(conf,inputs,outputs,(Geometry g1,Geometry g2) -> g1.union(g2));
+    }
+
+    public static int Intersection(HashMap conf,HashMap inputs, HashMap outputs) throws Exception {
+	return JsonOp2(conf,inputs,outputs,(Geometry g1,Geometry g2) -> g1.intersection(g2));
+    }
+
+    public static int Difference(HashMap conf,HashMap inputs, HashMap outputs) throws Exception {
+	return JsonOp2(conf,inputs,outputs,(Geometry g1,Geometry g2) -> g1.difference(g2));
+    }
+
+    public static int SymDifference(HashMap conf,HashMap inputs, HashMap outputs) throws Exception {
+	return JsonOp2(conf,inputs,outputs,(Geometry g1,Geometry g2) -> g1.symDifference(g2));
+    }
 
 }
 
