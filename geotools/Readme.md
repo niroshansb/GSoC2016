@@ -23,9 +23,10 @@ then run,
 Now you are ready to download the geotools and copy it in to your zoo-services directory.
 then go in the new directories created: geotools/base-vect-ops
 
-Run the following command 
+Run the following command
+``` 
  	CP="."; mvn dependency:tree > log ; j=1 list=$(grep "\- " log | grep -v "Building" | grep -v "\-\-\- "| cut -d":" -f2); list0=$(grep "\- "  log | grep -v "Building" | grep -v "\-\-\-" | cut -d":" -f4) ; for i in $list; do lt="$(echo $list0 | cut -d' ' -f$j)"; echo Scaning for $i version $lt ; for k in $(find /.m2/repository/ -name "*jar" | grep $i | grep /$lt/); do echo $k has been found; CP="$CP:$k"; done  ; j=$(expr $j + 1) ; done; pkg="$(grep "O) org.zoo_project:" log | cut -d":" -f2)" ; vers="$(grep "O) org.zoo_project:" log | cut -d":" -f4)" ; echo Searching for $pkg version $vers; for k in $(find /.m2/repository/ -name "*jar" | grep $vers | grep $pkg ); do echo $k has been found; CP="$CP:$k"; done
- 	
+``` 	
  	mvn dependency:tree
  	
  	
