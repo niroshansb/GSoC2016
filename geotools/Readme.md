@@ -1,4 +1,4 @@
-## This directory contains all the necessary files and instructions to provide geotools as a sevice in the ZOO-Service. ## 
+## This directory contains all the necessary files and instructions to provide geotools as a sevice in the ZOO-Service.  
 
 Geotools has been succeussfully tested as a service on the Zoo-Project.
 Basically this document is explaining about building of geotools, maven has been used for building it. 
