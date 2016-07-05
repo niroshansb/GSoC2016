@@ -12,13 +12,15 @@ Here the process is explaining the installation by using pom.xml file
 (You should have already build zoo-api otherwise you can run "make" command and build it in the zoo-api directory)
 
 You should create the ZOO.jar file in the  path ~/zoo-api/java/  by using the following command 
-	jar -cvf ./ZOO.jar ./org/zoo_project/ZOO.class
-
+```	
+jar -cvf ./ZOO.jar ./org/zoo_project/ZOO.class
+```
 
 Now place the pom.xml file in zoo-api/java  directory 
-then run, 
-	mvn install:install-file -Dfile=ZOO.jar -DgroupId=zoo -DartifactId=ZOO -Dversion=1.6.0 -Dpackaging=jar -DgeneratePom=true
-	
+then run,
+``` 
+mvn install:install-file -Dfile=ZOO.jar -DgroupId=zoo -DartifactId=ZOO -Dversion=1.6.0 -Dpackaging=jar -DgeneratePom=true
+```	
 
 Now you are ready to download the geotools and copy it in to your zoo-services directory.
 then go in the new directories created: geotools/base-vect-ops
