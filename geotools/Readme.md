@@ -9,7 +9,8 @@ You can successfully setup the geotools as a service in ZOO-Project by following
 
 Here the process is explaining the installation by using "pom.xml" file 
 
-(You should have already built  ZOO class of the Java ZOO-API, otherwise you can run "make" command and build it in the zoo-api/java directory)
+You should have already built  ZOO class of the Java ZOO-API, otherwise you can run "make" command and build it in the zoo-api/java directory
+And you should copy the libZOO.so in a place Java can find it. In case you have defined the java.library.path key as Library/WebServer/CGI-Executables/mm (in the [java] section), then you should copy it there.
 
 You should create the ZOO.jar file in the  path ~/zoo-api/java/  by using the following command 
 ```	
