@@ -1,18 +1,18 @@
-## This directory contains all the necessary files and instructions to provide geotools as a sevice in the ZOO-Service.  
+## This directory contains all the necessary files and instructions to provide Geotools as a sevice in the ZOO-Project.  
 
-Geotools has been succeussfully tested as a service on the Zoo-Project.
-Basically this document is explaining about building of geotools, maven has been used for building it. 
+Geotools can be implimented as a service via ZOO-Project. You can use all the functins which is available in Geotools. The neccessary instruction has been given here.
+Basically this document is explaining about building of geotools by using maven. 
 (Note: Here the process has been explained in the mac OSX environment )
 
 
-You can successfully setup the geotools as a service in ZOO-Project by following the below steps. 
+All the given steps has been tested with Mac OSX. You can successfully setup the geotools as a service in ZOO-Project by following the below steps. 
 
-Here the process is explaining the installation by using "pom.xml" file 
+Installation can be done by using "pom.xml" files. 
 
-You should have already built  ZOO class of the Java ZOO-API, otherwise you can run "make" command and build it in the zoo-api/java directory
-And you should copy the libZOO.so in a place Java can find it. In case you have defined the java.library.path key as Library/WebServer/CGI-Executables/mm (in the [java] section), then you should copy it there.
+Before start building Geotools. You should have already built  ZOO class of the Java ZOO-API, otherwise you can run "make" command and build it in the **zoo-api/java** directory
+And you should copy the libZOO file in a place where Java can find it. In case you have defined the java.library.path key as Library/WebServer/CGI-Executables/mm (in the [java] section), then you should copy it there.
 
-You should create the ZOO.jar file in the  path ~/zoo-api/java/  by using the following command 
+You should create the **ZOO.jar** file in the ** ~/zoo-api/java/ ** directory by using the following command 
 ```	
 jar -cvf ./ZOO.jar ./org/zoo_project/ZOO.class
 ```
