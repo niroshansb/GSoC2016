@@ -1,0 +1,22 @@
+<wps:Execute service="WPS" version="1.0.0" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
+../wpsExecute_request.xsd" language="en-US">
+  <!-- template-version: 0.21 -->
+	<ows:Identifier>Boundary</ows:Identifier>
+	<wps:DataInputs>
+		<wps:Input>
+			<ows:Identifier>InputPolygon</ows:Identifier>
+			<wps:Reference xlink:href="http://zoo-project.org/cgi-bin/proxy.cgi?url=http%3A%2F%2Fzoo-project.org%3A8080%2Fgeoserver%2Fows%3FSERVICE%3DWMS%26VERSION%3D1.3.0%26REQUEST%3DGetFeatureInfo%26FORMAT%3Dimage%252Fpng%26TRANSPARENT%3Dtrue%26QUERY_LAYERS%3Dtopp%253Astates%26LAYERS%3Dtopp%253Astates%26INFO_FORMAT%3Dapplication%252Fjson%26I%3D50%26J%3D50%26CRS%3DEPSG%253A3857%26STYLES%3D%26WIDTH%3D101%26HEIGHT%3D101%26BBOX%3D-11633104.075332662%252C3468405.792693461%252C-10644926.173661904%252C4456583.69436422" mimeType="application/json"/>
+		</wps:Input>
+		<wps:Input>
+			<ows:Identifier>BufferDistance</ows:Identifier>
+			<wps:Data>
+				<wps:LiteralData dataType="integer">1</wps:LiteralData>
+			</wps:Data>
+		</wps:Input>
+	</wps:DataInputs>	
+	<wps:ResponseForm>
+    <wps:RawDataOutput mimeType="application/json">
+      <ows:Identifier>Result</ows:Identifier>
+    </wps:RawDataOutput>
+  </wps:ResponseForm>	
+</wps:Execute>
