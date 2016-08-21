@@ -85,4 +85,4 @@ now you are able to check the available capabilities
 You should be able to run the geotools services from now! 
 
 
-[Let's run the serivices...!!](https://github.com/niroshansb/GSoC2016/tree/master/examples)
+[Let's run the services...!!](https://github.com/niroshansb/GSoC2016/tree/master/examples)
