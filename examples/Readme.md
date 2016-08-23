@@ -1,6 +1,6 @@
 ## Geotools Basic vector services
 
-Now we are going to tun the implimented services. Given folders are already available in your /zoo-project/zoo-services/geotools/base-vect-ops/ directory.
+Now we are going to run the implimented services. Given folders are already available in your /zoo-project/zoo-services/geotools/base-vect-ops/ directory.
 
 This cgi-env contains all the [ZOO-Service configuration files (.zcfg)](http://zoo-project.org/docs/services/zcfg-reference.html). It describe the WPS service. As mentioned in the [setup guids](https://github.com/niroshansb/GSoC2016/tree/master/GeotoolsInZOOProject) now you already copied them in the cgi directory. If not you can copy them now to your cgi directory.
 This example contains eleven (11) vectors services. You can add or remove them from [GeotoolsBasicServices.java](https://github.com/niroshansb/GSoC2016/blob/master/GeotoolsInZOOProject/geotools/base-vect-ops/src/main/java/org/zoo_project/GeotoolsBasicServices.java) file.
