@@ -13,7 +13,7 @@ We can check the available capabilities by using following command,
 ```
 ./zoo_loader.cgi "request=GetCapabilities&service=WPS"
 ```
-In the req directory contains all files for service request. Inputs and outputs need to be defined in this file. For example: request file for Buffer service 
+In the req directory contains all files for service request. These are XML files. Inputs and outputs need to be defined in this file. For example: request file for Buffer service 
 
 ```xml
 <wps:Execute service="WPS" version="1.0.0" xmlns:wps="http://www.opengis.net/wps/1.0.0" xmlns:ows="http://www.opengis.net/ows/1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.opengis.net/wps/1.0.0
