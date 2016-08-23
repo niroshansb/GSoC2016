@@ -10,10 +10,30 @@ It can be identified as below.
 
 ![screenshot](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/ScreenBug.png "Geotools web user interface directory" )
 
+Here you can identify the zoo_loader.cgi location. The given web user interface zoo_loader.cgi is located to the cgi-bin/mm directory. You should change it according to you directory before use the interface. After you change the directory you can use it.
+
 Now the web interface has been sucessfully setup! 
 you can run any service by using it. 
 
-![screenshot](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/ScreenUni.png "Geotools web user interfac Union" )
+Let's run buffer tools. 
+
+For that click a feature and select a single geometry tool. For this case click on buffer tool.
+
+First click on the feature
+![](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/buffer1.png)
+
+Then click on the Buffer button, then you can ge the result 
+![](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/buffer2.png)
+
+Then click another feature and select a multiple geometries tool.
+
+Click on the second feature 
+![](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/buffer3.png)
+
+Now, Click on the tool, for this case Union 
+![](https://raw.githubusercontent.com/wiki/niroshansb/GSoC2016/image/buffer4.png)
+ 
+You can run any tools by folowwing the same procedure.
   
 
 
